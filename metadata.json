@@ -1,0 +1,6 @@
+{
+  "name": "ConnectCard PH",
+  "description": "Premium Digital Business Cards and NFC Smart Cards in the Philippines. Tap to share contacts, socials, and Google Reviews instantly.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

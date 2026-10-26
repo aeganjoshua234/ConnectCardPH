@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="Connect with Aegan Joshua, IT consultant and full stack developer. Save contact details and explore technical links.">
+  <title>Aegan Joshua | Digital Business Card</title>
+  <style>
+    :root {
+      --bg: #101113;
+      --panel: #191a1d;
+      --panel-2: #222327;
+      --text: #f7f5f0;
+      --muted: #aaa9a5;
+      --gold: #d6b77a;
+      --line: rgba(255,255,255,.12);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% -12%, rgba(214,183,122,.16), transparent 43%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(100% - 28px, 520px); margin: 0 auto; padding: 24px 0 34px; }
+    .topline { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px; }
+    .brand { font-size:.76rem; font-weight:800; letter-spacing:.19em; color:var(--gold); text-transform:uppercase; }
+    .tap-label { font-size:.7rem; color:var(--muted); border:1px solid var(--line); padding:6px 10px; border-radius:999px; }
+    .hero { text-align:center; padding:30px 22px 25px; border:1px solid var(--line); border-radius:28px; background:linear-gradient(150deg,rgba(255,255,255,.065),rgba(255,255,255,.018)); box-shadow:0 24px 70px rgba(0,0,0,.25); }
+    .avatar { width:94px; height:94px; display:grid; place-items:center; margin:0 auto 17px; border-radius:50%; border:1px solid rgba(214,183,122,.75); background:linear-gradient(135deg,#3b3427,#191817); color:var(--gold); font-size:1.55rem; font-weight:700; letter-spacing:.08em; }
+    .eyebrow { color:var(--gold); font-size:.69rem; letter-spacing:.2em; font-weight:750; text-transform:uppercase; }
+    h1 { font-size:clamp(1.8rem,7vw,2.45rem); line-height:1.1; letter-spacing:-.045em; margin:8px 0 7px; }
+    .role { color:#ddd8ce; font-size:.96rem; margin:0; }
+    .bio { color:var(--muted); font-size:.88rem; max-width:360px; margin:14px auto 0; }
+    .actions { display:grid; gap:10px; margin-top:21px; }
+    .btn { display:flex; align-items:center; justify-content:center; gap:10px; min-height:52px; border-radius:15px; padding:13px 16px; font-weight:750; font-size:.92rem; border:1px solid var(--line); transition:transform .15s ease, background .15s ease; cursor:pointer; }
+    .btn:active { transform:scale(.985); }
+    .btn-primary { color:#171512; background:var(--gold); border-color:var(--gold); }
+    .btn-secondary { background:rgba(255,255,255,.045); }
+    .section { margin-top:24px; }
+    .section-head { display:flex; align-items:center; justify-content:space-between; margin:0 2px 11px; }
+    .section h2 { font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0; }
+    .links { display:grid; grid-template-columns:1fr; gap:10px; }
+    .link-card { display:flex; align-items:center; gap:14px; padding:15px; border:1px solid var(--line); background:var(--panel); border-radius:17px; min-width:0; }
+    .link-card:hover { background:var(--panel-2); }
+    .link-icon { flex:0 0 42px; height:42px; display:grid; place-items:center; border-radius:13px; background:rgba(214,183,122,.12); color:var(--gold); font-size:1.1rem; font-weight:800; }
+    .link-copy { min-width:0; flex:1; }
+    .link-title { font-weight:750; font-size:.92rem; }
+    .link-sub { color:var(--muted); font-size:.78rem; overflow-wrap:anywhere; }
+    .arrow { color:var(--muted); font-size:1.1rem; }
+    .socials { display:grid; grid-template-columns:1fr; gap:10px; }
+    .social { display:flex; flex-direction:row; align-items:center; justify-content:flex-start; gap:14px; min-height:62px; padding:12px 15px; background:var(--panel); border:1px solid var(--line); border-radius:16px; text-align:left; }
+    .social-mark { display:grid; place-items:center; flex:0 0 36px; width:36px; height:36px; border-radius:10px; background:rgba(214,183,122,.12); color:var(--gold); font-weight:800; }
+    .social span:last-child { font-size:.75rem; font-weight:650; }
+    .about { padding:17px; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.025); color:var(--muted); font-size:.87rem; }
+    .about strong { color:var(--text); }
+    .footer { text-align:center; margin-top:25px; color:#777873; font-size:.72rem; }
+    .toast { position:fixed; left:50%; bottom:18px; transform:translate(-50%,20px); opacity:0; pointer-events:none; background:#f7f5f0; color:#171512; padding:11px 16px; border-radius:999px; font-size:.85rem; font-weight:700; box-shadow:0 8px 30px rgba(0,0,0,.3); transition:all .2s ease; width:max-content; max-width:calc(100% - 30px); }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    .avatar { width: 100px; height: 100px; border-radius: 50%; overflow: hidden;}
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    
+
+    /* Carousels */
+    .carousel { position:relative; }
+    .track { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; border-radius:18px; }
+    .track::-webkit-scrollbar { display:none; }
+    .slide { flex:0 0 100%; scroll-snap-align:center; min-width:0; }
+    .work { margin:0; border:1px solid var(--line); border-radius:18px; background:var(--panel); overflow:hidden; }
+    .shot { aspect-ratio:16/10; display:grid; place-items:end start; padding:14px; background:var(--g, linear-gradient(135deg,#3b3427,#191817)); position:relative; }
+    .shot img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .shot .tag { position:relative; font-size:.7rem; font-weight:700; color:var(--text); background:rgba(16,17,19,.72); border:1px solid var(--line); padding:5px 10px; border-radius:999px; backdrop-filter:blur(6px); }
+    .work figcaption { padding:14px 16px 16px; }
+    .work h3 { margin:0 0 3px; font-size:.95rem; }
+    .work p { margin:0; color:var(--muted); font-size:.82rem; }
+    .work .stack { margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; }
+    .work .stack span { font-size:.68rem; color:var(--gold); background:rgba(214,183,122,.12); padding:3px 9px; border-radius:999px; }
+    .car-ui { display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
+    .dots { display:flex; gap:7px; }
+    .dot { width:7px; height:7px; padding:0; border-radius:50%; border:0; background:rgba(255,255,255,.22); cursor:pointer; transition:width .2s ease, background .2s ease; }
+    .dot[aria-current="true"] { width:22px; border-radius:999px; background:var(--gold); }
+    .nav { display:flex; gap:8px; }
+    .nav button { width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:rgba(255,255,255,.045); color:var(--text); font-size:1rem; cursor:pointer; }
+    .nav button:hover { background:var(--panel-2); }
+    .dot:focus-visible, .nav button:focus-visible, .btn:focus-visible, a:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px; }
+    .stat { text-align:center; padding:14px 6px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
+    .stat b { display:block; font-size:1.3rem; letter-spacing:-.02em; color:var(--gold); }
+    .stat span { font-size:.72rem; color:var(--muted); }
+    .quote { height:100%; margin:0; padding:20px 18px; border:1px solid var(--line); border-radius:18px; background:var(--panel); }
+    .stars { color:var(--gold); letter-spacing:.15em; font-size:.85rem; }
+    .quote blockquote { margin:10px 0 16px; font-size:.92rem; color:#e7e3da; }
+    .who { display:flex; align-items:center; gap:12px; }
+    .who .avatar-sm { flex:0 0 38px; width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:rgba(214,183,122,.12); color:var(--gold); font-size:.78rem; font-weight:800; }
+    .who strong { display:block; font-size:.85rem; }
+    .who span { font-size:.75rem; color:var(--muted); }
+    @media (min-width:600px) { .wrap { padding-top:36px; } .hero { padding:36px 30px 30px; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topline">
+      <div class="brand">IT Consultant</div>
+      <div class="tap-label">NFC DIGITAL CARD</div>
+    </header>
+
+    <section class="hero" aria-labelledby="person-name">
+      <div class="avatar">
+    <img src="c:\Users\PC\Downloads\contact3.png" alt="My profile picture">
+</div>
+      <div class="eyebrow">Let's connect</div>
+      <h1 id="person-name">Aegan Joshua</h1>
+      <p class="role">IT Consultant &amp; Full Stack Developer</p>
+      <p class="bio">I help people and businesses build meaningful connections, discover opportunities, and grow with confidence.</p>
+      <div class="actions">
+        <button class="btn btn-primary" id="saveContact" type="button"><span aria-hidden="true">＋</span> Save Contact</button>
+        <!-- <a class="btn btn-secondary" href="https://wa.me/639000000000" target="_blank" rel="noopener"><span aria-hidden="true">◉</span> Chat on WhatsApp</a> -->
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="contact-heading">
+      <div class="section-head"><h2 id="contact-heading">Contact information</h2></div>
+      <div class="links">
+        <a class="link-card" href="tel:+639000000000">
+          <span class="link-icon" aria-hidden="true">☎</span>
+          <span class="link-copy"><span class="link-title">Call me</span><br><span class="link-sub">+63 900 000 0000</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="link-card" href="mailto:alex@example.com">
+          <span class="link-icon" aria-hidden="true">✉</span>
+          <span class="link-copy"><span class="link-title">Email me</span><br><span class="link-sub">aegan@example.com</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="link-card" href="https://www.yourbusiness.com" target="_blank" rel="noopener">
+          <span class="link-icon" aria-hidden="true">↗</span>
+          <span class="link-copy"><span class="link-title">Visit my website</span><br><span class="link-sub">www.yourbusiness.com</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="link-card" href="https://www.google.com/maps/search/?api=1&amp;query=123+Business+Street+Makati+City+Metro+Manila+Philippines" target="_blank" rel="noopener">
+          <span class="link-icon" aria-hidden="true">📍</span>
+          <span class="link-copy"><span class="link-title">Find us on Google Maps</span><br><span class="link-sub">Get directions to our office</span></span><span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="work-heading">
+      <div class="section-head"><h2 id="work-heading">Recent work</h2></div>
+      <div class="carousel" data-carousel data-autoplay="5000" aria-roledescription="carousel" aria-label="Recent projects">
+        <div class="track">
+          <!-- To use a real screenshot, add inside .shot:  <img src="images/project-1.jpg" alt="Project name screenshot"> -->
+          <figure class="slide work">
+            <div class="shot" style="--g:linear-gradient(135deg,#3b3427,#14130f)"><span class="tag">Web app</span><img src="LeverAI.png" alt="My image"></div>
+            <figcaption><h3>Project name one</h3><p>One line on the problem you solved and the result.</p><div class="stack"><span>React</span><span>Node.js</span><span>PostgreSQL</span></div></figcaption>
+          </figure>
+          <figure class="slide work">
+            <div class="shot" style="--g:linear-gradient(135deg,#27343b,#101316)"><span class="tag">Business website</span></div>
+            <figcaption><h3>Project name two</h3><p>One line on the problem you solved and the result.</p><div class="stack"><span>HTML/CSS</span><span>PHP</span><span>MySQL</span></div></figcaption>
+          </figure>
+          <figure class="slide work">
+            <div class="shot" style="--g:linear-gradient(135deg,#2f3b27,#111410)"><span class="tag">IT consulting</span></div>
+            <figcaption><h3>Project name three</h3><p>One line on the problem you solved and the result.</p><div class="stack"><span>Systems setup</span><span>Security</span></div></figcaption>
+          </figure>
+        </div>
+        <div class="car-ui">
+          <div class="dots"></div>
+          <div class="nav"><button type="button" data-prev aria-label="Previous project">‹</button><button type="button" data-next aria-label="Next project">›</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="proof-heading">
+      <div class="section-head"><h2 id="proof-heading">What clients say</h2></div>
+      <!-- Replace these sample numbers with your real ones. -->
+      <div class="stats">
+        <div class="stat"><b>50+</b><span>Projects delivered</span></div>
+        <div class="stat"><b>30+</b><span>Happy clients</span></div>
+        <div class="stat"><b>5.0★</b><span>Average rating</span></div>
+      </div>
+      <div class="carousel" data-carousel data-autoplay="6500" aria-roledescription="carousel" aria-label="Client testimonials">
+        <div class="track">
+          <figure class="slide quote">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Replace this with a real client quote about the problem you solved and how it felt to work with you.”</blockquote>
+            <div class="who"><span class="avatar-sm" aria-hidden="true">JD</span><div><strong>Client Name</strong><span>Owner, Their Business</span></div></div>
+          </figure>
+          <figure class="slide quote">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Short and specific works best: what changed for them, and how fast you delivered.”</blockquote>
+            <div class="who"><span class="avatar-sm" aria-hidden="true">MS</span><div><strong>Client Name</strong><span>Manager, Their Company</span></div></div>
+          </figure>
+          <figure class="slide quote">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Add a third testimonial, ideally from a different kind of client than the first two.”</blockquote>
+            <div class="who"><span class="avatar-sm" aria-hidden="true">RT</span><div><strong>Client Name</strong><span>Founder, Their Startup</span></div></div>
+          </figure>
+        </div>
+        <div class="car-ui"><div class="dots"></div></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="social-heading">
+      <div class="section-head"><h2 id="social-heading">Find me online</h2></div>
+      <div class="socials">
+        <a class="social" href="https://facebook.com/" target="_blank" rel="noopener"><span class="social-mark">f</span><span>Facebook</span></a>
+        <a class="social" href="https://instagram.com/" target="_blank" rel="noopener"><span class="social-mark">◎</span><span>Instagram</span></a>
+        <a class="social" href="https://linkedin.com/" target="_blank" rel="noopener"><span class="social-mark">in</span><span>LinkedIn</span></a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-heading">
+      <div class="section-head"><h2 id="about-heading">A little about my business</h2></div>
+      <div class="about"><strong>Personal service. Professional results.</strong><br>Tell visitors what you do, who you help, and what makes your business different. Keep this section short and focused on the customer.</div>
+    </section>
+
+    <footer class="footer">Shared with one tap · Powered by your brand</footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // EDIT THESE SAMPLE DETAILS BEFORE PUBLISHING.
+    const contact = {
+      firstName: "Aegan Joshua",
+      lastName: "Malapitan",
+      organization: "Sipat Tech Review",
+      title: "IT Consultant & Full Stack Developer",
+      phone: "+639648426312",
+      email: "aeganjmalapitan@gmail.com",
+      website: "https://www.yourbusiness.com"
+    };
+
+    const toast = document.getElementById("toast");
+    let toastTimeout;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toast.classList.remove("show"), 2800);
+    }
+
+    document.getElementById("saveContact").addEventListener("click", () => {
+      const escapeVCard = value => String(value).replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\\;");
+      const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${escapeVCard(contact.lastName)};${escapeVCard(contact.firstName)};;;`,
+        `FN:${escapeVCard(contact.firstName + " " + contact.lastName)}`,
+        `ORG:${escapeVCard(contact.organization)}`,
+        `TITLE:${escapeVCard(contact.title)}`,
+        `TEL;TYPE=CELL:${escapeVCard(contact.phone)}`,
+        `EMAIL:${escapeVCard(contact.email)}`,
+        `URL:${escapeVCard(contact.website)}`,
+        "END:VCARD"
+      ].join("\r\n");
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${contact.firstName}-${contact.lastName}.vcf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      showToast("Contact card downloaded. Open it to save the contact.");
+    });
+
+    // Carousels: swipe, dots, arrows, and gentle autoplay (paused on touch/hover, off for reduced motion).
+    document.querySelectorAll("[data-carousel]").forEach(root => {
+      const track = root.querySelector(".track");
+      const slides = [...track.children];
+      const dotsBox = root.querySelector(".dots");
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let index = 0, timer;
+      const dots = slides.map((_, i) => {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "dot"; b.setAttribute("aria-label", "Go to slide " + (i + 1));
+        b.addEventListener("click", () => go(i));
+        dotsBox.appendChild(b); return b;
+      });
+      function mark(i) { index = i; dots.forEach((d, n) => d.setAttribute("aria-current", n === i)); }
+      function go(i) {
+        i = (i + slides.length) % slides.length;
+        track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduce ? "auto" : "smooth" });
+        mark(i);
+      }
+      track.addEventListener("scroll", () => {
+        const i = Math.round(track.scrollLeft / (slides[0].offsetWidth + 12));
+        if (i !== index && i >= 0 && i < slides.length) mark(i);
+      }, { passive: true });
+      root.querySelector("[data-prev]")?.addEventListener("click", () => go(index - 1));
+      root.querySelector("[data-next]")?.addEventListener("click", () => go(index + 1));
+      const delay = Number(root.dataset.autoplay);
+      const stop = () => clearInterval(timer);
+      const start = () => { stop(); if (delay && !reduce) timer = setInterval(() => go(index + 1), delay); };
+      ["pointerdown", "mouseenter", "focusin"].forEach(e => root.addEventListener(e, stop));
+      ["pointerup", "mouseleave", "focusout"].forEach(e => root.addEventListener(e, start));
+      mark(0); start();
+    });
+  </script>
+</body>
+</html>
